@@ -1,0 +1,8 @@
+- name: Harden EC2 instances  
+  hosts: aws_ec2  
+  tasks:  
+    - name: Disable root SSH  
+      ansible.posix.lineinfile:  
+        path: /etc/ssh/sshd_config  
+        regexp: "^PermitRootLogin"  
+        line: "PermitRootLogin no"  
